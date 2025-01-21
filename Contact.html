@@ -1,0 +1,175 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Furniture Store - Contact Us
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* General styling for the container */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for the input fields */
+.contact-right input[type="text"],
+.contact-right input[type="email"],
+.contact-right textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-right input[type="text"]:focus,
+.contact-right input[type="email"]:focus,
+.contact-right textarea:focus {
+    border-color: #007BFF;
+}
+
+/* Style for the submit button */
+.contact-right .btn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-right .btn:hover {
+    background-color: #0056b3;
+}
+
+.contact-right .btn2 {
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Style for the message span */
+#msg {
+    margin-top: 10px;
+    color: #28a745;
+    font-size: 14px;
+    text-align: center;
+}
+
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+   <div class="container mx-auto flex justify-between items-center p-6">
+    <div class="text-2xl font-bold text-gray-800">
+     Furniture Store
+    </div>
+    <nav class="space-x-4">
+     <a class="text-gray-600 hover:text-gray-800" href="home.html">
+      Home
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="shop.html">
+      Shop
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="About.html">
+      About
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="Contact.html">
+      Contact
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto py-12">
+   <section class="bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">
+     Contact Us
+    </h1>
+    <div class="flex flex-col md:flex-row items-center">
+     <div class="md:w-1/2 mb-6 md:mb-0">
+      <img alt="A customer service representative talking on the phone and typing on a computer" class="rounded-lg shadow-lg" height="400" src="https://storage.googleapis.com/a1aa/image/8W4lyZOHXo4RGBk5qvTN98ehN1u9jGKIi3BtWiBaqDmpAweTA.jpg" width="600"/>
+     </div>
+     <div class="md:w-1/2 md:pl-8">
+      <p class="text-gray-600 mb-4">
+       We would love to hear from you! Whether you have a question about our products, need assistance with an order, or just want to provide feedback, feel free to reach out to us.
+      </p>
+      <div class="contact-right">
+        <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your-Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+        </form>
+        <span id="msg"></span>
+    </div>
+     
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-gray-800 text-white py-6">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2025 Furniture Store. All rights reserved.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+     <a class="text-white hover:text-gray-400" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="text-white hover:text-gray-400" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="text-white hover:text-gray-400" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a class="text-white hover:text-gray-400" href="#">
+      <i class="fab fa-pinterest">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz3Mu2eNYAOhSeHE30oFdgNcPeRaFZqZ6kBxkw7Fkq7SbZWF1jqt_AKXg5XSey2yGBJ_Q/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+ </body>
+</html>

@@ -1,0 +1,289 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Furniture Shop
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+  <script>
+   let cart = [];
+
+        function addToCart(productName, productPrice) {
+            const product = { name: productName, price: productPrice };
+            cart.push(product);
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function viewCart() {
+            let cartItems = '';
+            let total = 0;
+            cart.forEach(item => {
+                cartItems += `<li class="py-2 border-b border-gray-200">${item.name} - $${item.price.toFixed(2)}</li>`;
+                total += item.price;
+            });
+            cartItems += `<li class="py-2 font-bold">Total: $${total.toFixed(2)}</li>`;
+            document.getElementById('cart-items').innerHTML = cartItems;
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+   <div class="container mx-auto flex justify-between items-center p-6">
+    <div class="text-2xl font-bold text-gray-800">
+     Furniture Store
+    </div>
+    <nav class="space-x-4">
+     <a class="text-gray-600 hover:text-gray-800" href="Home.html">
+      Home
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="shop.html">
+      Shop
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="About.html">
+      About
+     </a>
+     <a class="text-gray-600 hover:text-gray-800" href="Contact.html">
+      Contact
+     </a>
+     <a class="text-gray-600 hover:text-gray-800 relative" href="#" onclick="viewCart()">
+      <i class="fas fa-shopping-cart">
+      </i>
+      <span class="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs px-2" id="cart-count">
+       0
+      </span>
+     </a>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto py-12">
+   <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">
+    Shop Our Collection
+   </h1>
+   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <!-- Product 1 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden dining table with four chairs" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/BLNos5BVIBZaGZ4Y6t9dLmXDR3TkrmWD9GVMc8ijnnnTAYfJA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Dining Table Set
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $499.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Dining Table Set', 499.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 2 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A comfortable modern sofa with decorative pillows" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/BSvEOLHXKP7cHJvlBnyGFJ9INx6fifHPt9HxGLnrQ1tCBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Modern Sofa
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $799.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Modern Sofa', 799.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 3 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A wooden coffee table with a glass top and decorative items" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/qbiHdxPwl4qyEVdKEKdOrLN4xNACfC5iiPCCWexQJeAICA7nA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Coffee Table
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $199.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Coffee Table', 199.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 4 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A stylish wooden bed frame with a comfortable mattress" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/p24kRdlcSZZnDpmn9ktoMmPaf7g1Pmqod3FOpJeDfR0MCA7nA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Wooden Bed Frame
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $699.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Wooden Bed Frame', 699.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 5 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern office chair with ergonomic design" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/ac6EH2S73paFJ1c5dixSx7dIYNV3F5xORyfA8Dyj9g3gAweTA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Office Chair
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $149.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Office Chair', 149.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 6 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A stylish wooden bookshelf with multiple shelves" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/qd5zfzdD0hyKXanNORBBSE3Pai8ic9hXKv1QfUIzB4NQBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Bookshelf
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $249.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Bookshelf', 249.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 7 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern TV stand with storage compartments" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/JbrgglZumKpxGZKmwBnsu9PkCMPu4kemEctuKEFkc1YkAweTA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      TV Stand
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $299.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('TV Stand', 299.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 8 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern dining chair with a comfortable cushion" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/XgJklmGLpjaJMlNlV4vcLQDnvuuBF1wzFxa1UtCQFJqUAYfJA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Dining Chair
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $99.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Dining Chair', 99.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 9 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden wardrobe with sliding doors" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/FURuEss7g4IAAdZsWWdGLNkhj2eeOhgvNdoIS7hNW59KBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Wardrobe
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $599.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Wardrobe', 599.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 10 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden nightstand with drawers" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/8W4lyZOHXo4RGBk5qvTN98ehN1u9jGKIi3BtWiBaqDmpAweTA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Nightstand
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $129.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Nightstand', 129.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 11 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden dresser with multiple drawers" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/R2QcySmZDHZxL1xVHmg9SWoRD5MneYZ7nfXp3SOHM0dXBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Dresser
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $399.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Dresser', 399.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 12 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden coffee table with a glass top" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/GeazxoMN3LVhVy6nPYOTKvlYYEq1fy9BxwmF8euamdLfDA2PB.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Glass Coffee Table
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $249.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Glass Coffee Table', 249.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 13 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden dining table with a glass top" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/jtL6G2fa9U0zYKra0L78NkgRYRhkL3Wo6j8JS9lZeKGMBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Glass Dining Table
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $499.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Glass Dining Table', 499.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 14 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden TV stand with storage compartments" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/mQp6bFyZAI6POFir0GzeLL4zHHH4ptvNZUHdaY8kYfYVBg9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      TV Stand
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $299.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('TV Stand', 299.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 15 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden bookshelf with multiple shelves" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/9SvXw3QcXDJnHp75ehfuzTt47QlOgcoWsDriOjXkXbK9Ag9TA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Bookshelf
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $249.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Bookshelf', 249.99)">
+      Add to Cart
+     </button>
+    </div>
+    <!-- Product 16 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A modern wooden dining table with four chairs" class="rounded-lg mb-4" height="200" src="https://storage.googleapis.com/a1aa/image/BLNos5BVIBZaGZ4Y6t9dLmXDR3TkrmWD9GVMc8ijnnnTAYfJA.jpg" width="300"/>
+     <h3 class="text-xl font-bold text-gray-800 mb-2">
+      Dining Table Set
+     </h3>
+     <p class="text-gray-600 mb-4">
+      $499.99
+     </p>
+     <button class="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700 transition duration-300" onclick="addToCart('Dining Table Set', 499.99)">
+      Add to Cart
+     </button>
+    </div>
+    
